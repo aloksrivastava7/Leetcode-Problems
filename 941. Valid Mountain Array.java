@@ -1,3 +1,4 @@
+/**
 Problem :-
 Given an array of integers arr, return true if and only if it is a valid mountain array.
 
@@ -20,10 +21,12 @@ Example 3:
 
 Input: arr = [0,3,2,1]
 Output: true
+**/
 
-Solution :-
+// Solution :-
 
 // Solution 1
+
 class Solution {
     public boolean validMountainArray(int[] arr) {
         int i = 0;
@@ -41,10 +44,12 @@ class Solution {
     }
 }
 
+/**
 1. Simple Approach :-
 *  Using (i) as a pointer through the array, we find the index to which the array is strictly increasing. After traversal, if (i) is 0 or equal to the length of the array -> it means that either the array has no increasing part or the array has only increasing part. Therefore we return false
 *  After that we check for the strictly decreasing part. Here we check in a opposite way.If any value is found which is not less than the previous one, then we return false otherwise the process continues.
 *  In the end, after all of this checked we return true as all the possibilities of the array not being a Valid Moountain array have been processed.
+**/
 
 //Solution 2
 class Solution {
@@ -74,8 +79,10 @@ class Solution {
         
  }
  
+/**
  2. Peak Value Approach :-
 * Here we check for the element of the array which is greater than both of its neighbours.
 * If we have more than one such value than the array is not a Valid Mountain Array.
 * We also add an extra if statement to compare the values at the boundaries and check if they are in order.
+**?
  
