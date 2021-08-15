@@ -1,3 +1,4 @@
+/**
 Problem :- Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
 
 Example 1:
@@ -9,8 +10,9 @@ Example 2:
 
 Input: head = [1,1,2,3,3]
 Output: [1,2,3]
+**/
 
-Solution :-
+// Solution :-
 
 /**
  * Definition for singly-linked list.
@@ -41,7 +43,9 @@ class Solution {
     }
 }
 
+/**
 Approach :- 
 * It checks the val at the current node and the next node and if they are same, interchanges references of the current node and the next node such that the next node is deleted 
   (as both of them were having same value -- duplicates). 
+**/
 
