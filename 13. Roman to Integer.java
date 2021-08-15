@@ -1,3 +1,4 @@
+/**
 Problem :- Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 Symbol       Value
 I             1
@@ -46,8 +47,8 @@ Input: s = "MCMXCIV"
 Output: 1994
 
 Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
-
-Solution :- 
+**/
+// Solution :- 
 
 class Solution {
     public int romanToInt(String s) {
@@ -186,6 +187,8 @@ class Solution {
     }
 }
 
+/**
 Approach :-
 * The code continuously checks the character at an index (from left to right) and the character at its immediate right position performing the related calculations and increment / decrement operations based on the position of the character.
 * number :- this variable stores the value of the roman numeral after each extraction of character.
+**/
