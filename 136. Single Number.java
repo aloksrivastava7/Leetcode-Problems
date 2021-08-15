@@ -1,3 +1,4 @@
+/**
 Problem :- Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
 
 You must implement a solution with a linear runtime complexity and use only constant extra space.
@@ -16,8 +17,9 @@ Example 3:
 
 Input: nums = [1]
 Output: 1
+**/
 
-Solution :-
+// Solution :-
 
 class Solution {
     public int singleNumber(int[] nums) {
@@ -42,5 +44,7 @@ class Solution {
     }
 }
 
+/**
 Approach :-
 * Using Hashmap, we map frequency of each element in the array and then using that return the element whose frequency is 1.
+**/
