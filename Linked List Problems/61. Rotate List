@@ -1,0 +1,134 @@
+/**
+
+Problem : Given the head of a linked list, rotate the list to the right by k places.
+
+Example 1:
+
+Input: head = [1,2,3,4,5], k = 2
+Output: [4,5,1,2,3]
+
+Example 2:
+
+Input: head = [0,1,2], k = 4
+Output: [2,0,1]
+
+**/
+
+// Solution :
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+ 
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+        if (head == null)
+		    return head;
+	
+	    ListNode tempHead = head;
+	
+	    int count = 1;
+	    while (tempHead.next != null) {
+            tempHead = tempHead.next;
+            count++;
+	    }
+	
+	    tempHead.next = head;
+	    
+        k = (k%count);
+	    for (int i = count - k; i > 1; i--)
+		    head = head.next;
+
+	    tempHead = head.next;
+	    head.next = null;
+
+	    return tempHead;
+    }
+}
+
+/**
+
+Approach : ```
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+        if (head == null)
+		    return head;
+	
+	    ListNode tempHead = head;
+	
+	    int count = 1;
+	    while (tempHead.next != null) {
+            tempHead = tempHead.next;
+            count++;
+	    }
+	
+	    tempHead.next = head;
+	    
+        k = (k%count);
+	    for (int i = count - k; i > 1; i--)
+		    head = head.next;
+
+	    tempHead = head.next;
+	    head.next = null;
+
+	    return tempHead;
+    }
+}
+```
+
+* First we count the number of nodes inside the linkedlist.
+* After each k times of rotation, the Linkedlist gets back to its original form. This depends on the size of the linkedlist. If the size of the linked list is 3, then after 3 rotations, it will get back to its original form. In this way, test cases where value of k is very high can be reduced. ---> k = k % (length of the list). It gives the extra number of rotations that we'll have to perform
+* In those remaining k rotations, the value of k is directly proportional to the number of nodes which will be added to the front of the linkedlist from the back. 
+* (length of the linkedlist) - k gives us the nodes which will be added to the front of the linkedlist.
+* First we'll make this linkedlist a circular linked list by connecting the last node with the head
+* Now, In order to reach this point, we'll use a loop and displace the head to that point.
+* Now making tempHead as the new head of the Linkedlist. tempHead = head.next;
+* To end the cycle in the linkedist. We'll mark the next field of this node as null;
+* The newly formed linkedlist is the required linkedlist.
+* Optimal approach
+
+```
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+        if(head == null)
+            return head;
+        if(head.next == null) 
+            return head;
+        int count = 0;
+        ListNode dummy = head;
+        ListNode tail = head;
+        while(dummy != null) {
+            if(dummy.next == null) 
+                tail = dummy;
+            count++;
+            dummy = dummy.next;
+        }
+        k = (k%count);
+        while(k != 0) {
+            ListNode curr = head;
+            while(curr.next != tail) {
+                curr = curr.next;
+            }
+            tail.next = head;
+            curr.next = null;
+            head = tail;
+            tail = curr;
+            k--;
+        }
+        return head;
+    }
+}
+```
+* In this approach first we'll count the number of nodes in the linkedlist and find out the last node of the linkedlist and mark it as tail.
+* Now depending upon k , we'll rotate the linkedlist that many times moving the node at the last at the front.
+* Usage of k is the same as done in the optimal approach.
+* Beginner's approach
+
+**/
